@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  const [pokemon, setPokemon] = useState();
+
+// récupérer liste de pokémons
+
+    useEffect(() => {
+      const fetchData = async () => {
+        const pokemons = await fetch('https://pokeapi.co/api/v2/pokemon/')
+          .then(response => response.json());
+        setPokemon(pokemons);
+      };
+      fetchData();
+    }, []);
+    console.log(pokemon)
+
+    
   return (
     <div className="App">
       <header className="App-header">
@@ -10,6 +26,9 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        {/*Afficher les 20 premiers pokémons*/}
+        {/*pokemon.map(pkmn => <p>pkmn.count</p>)*/}
+
         <a
           className="App-link"
           href="https://reactjs.org"
