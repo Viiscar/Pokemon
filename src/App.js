@@ -5,6 +5,19 @@ import './App.css';
 
 function App() {
 
+  const [pokemon, setPokemon] = useState();
+    
+  // récupérer liste de pokémons
+  useEffect(() => {
+    const fetchData = async () => {
+      const pokemons = await fetch('https://pokeapi.co/api/v2/pokemon/')
+        .then(response => response.json());
+      setPokemon(pokemons);
+    };
+    fetchData();
+    
+  }, []);
+
   return (
     
     <div className="App">

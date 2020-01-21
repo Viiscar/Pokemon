@@ -1,23 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-function Pokecard() {
-    const [pokemon, setPokemon] = useState();
+function Pokecard(props) {
+
     const [sprite, setSprite] = useState();
-
-    const pokemonRes = pokemon && pokemon.results ? pokemon.results : [];
-
+    const pokemonRes = props.pokemon && props.pokemon.results ? props.pokemon.results : [];
     const pokeUrl = pokemonRes.map(pkmn => pkmn.url);
-
-    // récupérer liste de pokémons
-    useEffect(() => {
-      const fetchData = async () => {
-        const pokemons = await fetch('https://pokeapi.co/api/v2/pokemon/')
-          .then(response => response.json());
-        setPokemon(pokemons);
-      };
-      fetchData();
-      
-    }, []);
 
     //récupérer les sprites des pokémons
     useEffect(() => {
@@ -33,12 +20,7 @@ function Pokecard() {
       }
       
       fetchData2();
-    }, [pokemon]);
-
-    //console.log(pokemon);
-    //console.log(sprite);
-    //console.log(pokeUrl);
-
+    }, [props.pokemon]);
 
     return (
 
@@ -53,3 +35,8 @@ function Pokecard() {
 }
 
 export default Pokecard;
+
+// Line 6:24:  'pokemon' is not defined  no-undef
+// Line 6:35:  'pokemon' is not defined  no-undef
+// Line 6:53:  'pokemon' is not defined  no-undef
+// Line 23:9:  'pokemon' is not defined  no-undef
