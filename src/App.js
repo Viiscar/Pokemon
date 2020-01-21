@@ -6,6 +6,7 @@ import './App.css';
 function App() {
 
   const [pokemon, setPokemon] = useState();
+  const pokeResult= pokemon.results;
     
   // récupérer liste de pokémons
   useEffect(() => {
