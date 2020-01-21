@@ -6,7 +6,8 @@ import './App.css';
 function App() {
 
   const [pokemon, setPokemon] = useState();
-  const pokeResult= pokemon.results;
+  //const pokeResult= pokemon.results;
+  //const pokemonRes = pokemon && pokemon.results ? pokemon.results : [];
     
   // récupérer liste de pokémons
   useEffect(() => {
@@ -29,7 +30,7 @@ function App() {
         </p>
 
         {/*Afficher les 20 premiers pokémons*/}
-        <Pokecard />
+        <Pokecard {...pokemon}/>
 
         <a
           className="App-link"

@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
-function Pokecard(props) {
+function Pokecard(props) { 
 
+    const[pokemon, setPokemon] = useState(props)
     const [sprite, setSprite] = useState();
 
+    //récupérer les sprites des pokémons
     useEffect(() => {
      
+      setPokemon(props)
       const fetchData2 = async () => {
         let sprites = [];
 
-        props.pokeResult.map( async (pkmn, index) => 
+        pokemon.results.map( async (pkmn, index) => 
             
           {const pokemons = await fetch(pkmn.url[index])
             .then(response => response.json());
@@ -17,19 +20,20 @@ function Pokecard(props) {
         
         )
         setSprite(sprites);
+
       }
       
       fetchData2();
-    }, [props.pokemon]);
+    }, [props]);
 
     return (
 
       
-      props.pokeResult.map((pkmn, index) => 
-            <div key = {index} >
-                <p>{pkmn.name}</p> 
-                <img src={sprite ? sprite[index] : ""} alt={pkmn.name}></img> 
-            </ div>
+      pokemon.results.map((pkmn, index) => 
+        <div key = {index} >
+            <p>{pkmn.name}</p> 
+            <img src={sprite ? sprite[index] : ""} alt={pkmn.name}></img> 
+        </ div>
       )
     )
 }
