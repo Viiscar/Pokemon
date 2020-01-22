@@ -6,9 +6,8 @@ import './App.css';
 function App() {
 
   const [pokemon, setPokemon] = useState();
-  //const pokeResult= pokemon.results;
-  //const pokemonRes = pokemon && pokemon.results ? pokemon.results : [];
-    
+  const pokemonRes = pokemon && pokemon.results ? pokemon.results : [];
+     
   // récupérer liste de pokémons
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +19,7 @@ function App() {
     
   }, []);
 
-  return (
+  return ( 
     
     <div className="App">
       <header className="App-header">
@@ -28,10 +27,18 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-
+        
+        
         {/*Afficher les 20 premiers pokémons*/}
-        <Pokecard {...pokemon}/>
 
+        {
+          pokemonRes.map((pkmn) => 
+          
+            <Pokecard {...pokemon} {...pkmn.url}/>
+          
+          )
+        }
+       
         <a
           className="App-link"
           href="https://reactjs.org"

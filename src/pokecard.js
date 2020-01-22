@@ -11,21 +11,18 @@ function Pokecard(props) {
       setPokemon(props)
       const fetchData2 = async () => {
         let sprites = [];
-
-        pokemon.results.map( async (pkmn, index) => 
             
-          {const pokemons = await fetch(pkmn.url[index])
-            .then(response => response.json());
-          sprites.push(pokemons.sprites.front_default)}
+        const pokemons = await fetch(props)
+          .then(response => response.json());
+        sprites.push(pokemons.sprites.front_default)
         
-        )
         setSprite(sprites);
 
       }
       
       fetchData2();
     }, [props]);
-
+    console.log(sprite);
     return (
 
       
