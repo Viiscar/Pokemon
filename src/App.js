@@ -1,53 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
-import Pokecard from './pokecard.js';
+import Pokecard from './Pokecard/pokecard.js';
 import './App.css';
 
 function App() {
 
-  const [pokemon, setPokemon] = useState();
-  const pokemonRes = pokemon && pokemon.results ? pokemon.results : [];
+  const [pokemons, setPokemons] = useState();
+  const pokemonRes = pokemons && pokemons.results ? pokemons.results : [];
      
   // récupérer liste de pokémons
   useEffect(() => {
     const fetchData = async () => {
-      const pokemons = await fetch('https://pokeapi.co/api/v2/pokemon/')
+      const fetchResult = await fetch('https://pokeapi.co/api/v2/pokemon/')
         .then(response => response.json());
-      setPokemon(pokemons);
+      setPokemons(fetchResult);
     };
     fetchData();
     
   }, []);
 
+  //console.log(pokemonRes)
   return ( 
     
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        
+    <div className="App">   
         
         {/*Afficher les 20 premiers pokémons*/}
 
         {
-          pokemonRes.map((pkmn) => 
+          pokemonRes.map((pokemon) => 
           
-            <Pokecard {...pokemon} {...pkmn.url}/>
+            <Pokecard key={pokemon.name} pokelist= {pokemon} url={pokemon.url}/>
           
           )
         }
-       
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
     </div>
   );
 }
