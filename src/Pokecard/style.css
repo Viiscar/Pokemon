@@ -1,0 +1,27 @@
+.App{
+    background-color: #FACC04;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    
+}
+
+.pokecard{
+    background-color: #203165;
+    border: 3px solid #3357B7;
+    border-radius: 15%;
+    margin: 8px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.pokename{
+    color: white;
+    text-transform: capitalize;
+}
+
+
+/*
+jaune #FACC04
+bleu #3357B7
+bordure #203165*/
