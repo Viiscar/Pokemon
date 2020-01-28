@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
 import Pokecard from './Pokecard/pokecard.js';
 import './App.css';
 
@@ -19,22 +18,21 @@ function App() {
     
   }, []);
 
-  //console.log(pokemonRes)
+  
   return ( 
-    
-    <div className="App">   
-        
+
+      <div className="App">   
+          
         {/*Afficher les 20 premiers pokémons*/}
 
         {
           pokemonRes.map((pokemon) => 
-          
-            <Pokecard key={pokemon.name} pokelist= {pokemon} url={pokemon.url}/>
-          
+            
+            <Pokecard key={pokemon.name} pokelist= {pokemon} url={pokemon.url} />
+            
           )
         }
-      
-    </div>
+      </div>
   );
 }
 
