@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Pokecard from './Pokecard/pokecard.js';
 import './App.css';
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
+import Detail from "./Pokecard/detail";
 
 function App() {
 
@@ -21,18 +23,31 @@ function App() {
   
   return ( 
 
-      <div className="App">   
-          
-        {/*Afficher les 20 premiers pokémons*/}
+      <Router>
 
-        {
-          pokemonRes.map((pokemon) => 
+        <div className="App">   
             
-            <Pokecard key={pokemon.name} pokelist= {pokemon} url={pokemon.url} />
-            
-          )
-        }
-      </div>
+          {/*Afficher les 20 premiers pokémons*/}
+
+          {
+            pokemonRes.map((pokemon, index) => 
+              <>
+                <Link to={"/"+index}>
+                  <Pokecard key={pokemon.name} pokelist= {pokemon} url={pokemon.url} />
+                </Link>
+
+                <div>
+                  <Switch>
+                    <Route exact path={"/"+index} component={Detail} />    
+                  </Switch>
+                </div>
+              </>
+            )
+          }
+
+        </div>
+
+      </Router>
   );
 }
 

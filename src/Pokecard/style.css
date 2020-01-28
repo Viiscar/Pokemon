@@ -20,16 +20,11 @@
     text-transform: capitalize;
 }
 
-ul{
-    display: flex;
-    flex-direction: row;
-}
-
-li{
-    width: 200px;
-    list-style-type: none;
-    border:1px solid gray;
-    padding: 5px;
+button{
+    border-radius: 15%;
+    color: white;
+    background-color: #203165;
+    border: 3px solid #3357B7;
 }
 
 /*
