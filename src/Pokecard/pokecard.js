@@ -5,8 +5,7 @@ function Pokecard(props) {
 
     const[pokemon, setPokemon] = useState(props.pokelist)
     const [sprite, setSprite] = useState();
-    const [id, setId] = useState();
-    const [weight, setWeight] = useState();
+    
 
     //récupérer les sprites des pokémons
     useEffect(() => {
@@ -18,8 +17,6 @@ function Pokecard(props) {
           .then(response => response.json());
         
         setSprite(fetchResult.sprites.front_default);
-        setId(fetchResult.id);
-        setWeight(fetchResult.weight);
 
       }
       

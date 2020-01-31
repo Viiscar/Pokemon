@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Pokecard from './Pokecard/pokecard.js';
-import './App.css';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
+import Pokecard from './Pokecard/pokecard.js';
 import Detail from "./Pokecard/detail";
+import './App.css';
 
 function App() {
 
