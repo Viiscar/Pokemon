@@ -3,30 +3,26 @@ import {useHistory} from "react-router";
 
 function Detail(props){
 
+    const { match } = props;
+    let {id} = match.params;
+
     const history = useHistory();
-    const[pokemon, setPokemon] = useState(props.pokelist)
-    const [id, setId] = useState();
     const [weight, setWeight] = useState();
     const [height, setHeigt] = useState();
     const [exp, setExp] = useState();
 
     useEffect(() => {
-     
-        setPokemon(props.pokelist)
-        const fetchData2 = async () => {
-              
-          const fetchResult = await fetch(props.url)
+        const fetchData2 = async () => {     
+          const fetchResult = await fetch('https://pokeapi.co/api/v2/pokemon/'+id)
             .then(response => response.json());
-          
-          setId(fetchResult.id);
           setWeight(fetchResult.weight);
           setHeigt(fetchResult.height);
-          setExp(fetchResult.exp);
+          setExp(fetchResult.base_experience);
   
         }
         
         fetchData2();
-      }, []);
+    }, [id]);
 
     function goBackHandle(){
         history.goBack();

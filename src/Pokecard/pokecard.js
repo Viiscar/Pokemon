@@ -3,14 +3,12 @@ import './style.css';
 
 function Pokecard(props) { 
 
-    const[pokemon, setPokemon] = useState(props.pokelist)
+    const [name] = useState(props.name);
     const [sprite, setSprite] = useState();
     
-
     //récupérer les sprites des pokémons
     useEffect(() => {
      
-      setPokemon(props.pokelist)
       const fetchData2 = async () => {
             
         const fetchResult = await fetch(props.url)
@@ -21,15 +19,14 @@ function Pokecard(props) {
       }
       
       fetchData2();
-    }, [pokemon]);
+    }, []);
   
-    const pokemonDetails = pokemon ? pokemon : {name : ''};
     return (
       <div className="pokecard"> 
         <label className="pokename">
-            {pokemonDetails.name}
+            {name}
         </label>
-        <img src={sprite} alt={pokemonDetails.name}></img>
+        <img src={sprite} alt={name}></img>
       </div>
 
     )}

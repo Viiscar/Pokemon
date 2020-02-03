@@ -22,33 +22,22 @@ function App() {
 
   
   return ( 
-
+    <div className="App">
       <Router>
-
-        <div className="App">   
-            
-          {/*Afficher les 20 premiers pokémons*/}
-
           {
             pokemonRes.map((pokemon, index) => 
               <>
-                <Link to={"/"+index}>
-                  <Pokecard key={pokemon.name} pokelist= {pokemon} url={pokemon.url} />
+                <Link to={"/"+parseInt(index+1)}>
+                  <Pokecard key={pokemon.name} name={pokemon.name} url={pokemon.url} />
                 </Link>
-
-                <div>
-                  <Switch>
-                    <Route exact path={"/"+index} component={Detail} />    
-                  </Switch>
-                </div>
               </>
             )
           }
-
-        </div>
-
+          <Switch>
+            <Route path="/:id" component={Detail} />    
+          </Switch>
       </Router>
-  );
+    </div>)
 }
 
 export default App;
