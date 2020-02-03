@@ -7,6 +7,8 @@ function Detail(props){
     let {id} = match.params;
 
     const history = useHistory();
+    const [name, setName] = useState();
+    const [sprite, setSprite] = useState();
     const [weight, setWeight] = useState();
     const [height, setHeigt] = useState();
     const [exp, setExp] = useState();
@@ -15,7 +17,8 @@ function Detail(props){
         const fetchData2 = async () => {     
           const fetchResult = await fetch('https://pokeapi.co/api/v2/pokemon/'+id)
             .then(response => response.json());
-            console.log(id);
+          setName(fetchResult.name);
+          setSprite(fetchResult.sprites.front_default);
           setWeight(fetchResult.weight);
           setHeigt(fetchResult.height);
           setExp(fetchResult.base_experience);
@@ -32,10 +35,10 @@ function Detail(props){
     return(
         <div className="detail">
             <span className="id">{"N "+ id}</span>
-            <span>{"Taille: " + height}</span>
-            <span>{"Poids: " + weight}</span>
+            <img src={sprite} alt={name}></img>
+            <span>{"Taille: " + height + 0 + " cm"}</span>
+            <span>{"Poids: " + weight/10 + " kg"}</span>
             <span>{"Expérience de base: " + exp}</span>
-
             <button onClick={goBackHandle} >Retour</button>
         </div>
     )
