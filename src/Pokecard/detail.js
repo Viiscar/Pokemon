@@ -15,6 +15,7 @@ function Detail(props){
         const fetchData2 = async () => {     
           const fetchResult = await fetch('https://pokeapi.co/api/v2/pokemon/'+id)
             .then(response => response.json());
+            console.log(id);
           setWeight(fetchResult.weight);
           setHeigt(fetchResult.height);
           setExp(fetchResult.base_experience);
